@@ -1,0 +1,54 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+
+
+
+<div class="container-xl bg-light pt-5 border-top">
+
+    <div class="row mb-2">
+
+        <div class="col-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-with">
+            <div class="col-4 movie__poster img-thumbnail" style="background-image: url({{ movie.poster }});" class="images">
+            </div>
+
+            <div class="col-8 p-4 d-flex flex-column position-static bg-light">
+                <a href="" class="movie__favorite fs-1 my-2 mx-3 link-danger">
+                <strong class="d-inline-block mb-2 text-primary">{{ movie.title}}</strong>
+                <h3 class="mb-1 text-muted">{{ movie.duration}}</div>
+                <p>
+                    <span class="badge bg-warning text-dark">Animation</span>
+                    <span class="badge bg-warning text-dark">Aventure</span>
+                    <span class="badge bg-warning text-dark">comedie</span>
+                    <span class="badge bg-warning text-dark">famille</span>
+                
+                </p>
+                <p>
+                jkbbbbbbbbbbbbbbbr
+                vlkarejtblkrjtr
+                lrbmlbzjnlmjmljlmbzr
+                </p>
+                <div class="d-flex mb-4" style="color: orange;">
+                    <i class="bi bi-star-fill"></i>                
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span class="ps-1">4.8</span>
+                 </div>
+
+                 <h2>3 saisons </h2>
+                 <ul class="list-unlistes">
+                    <li><span class="badge bg-danger fs-6 mb-2"> saison 1</li>  
+                    <li><span class="badge bg-danger fs-6 mb-2"> saison 2</li>  
+                    <li><span class="badge bg-danger fs-6 mb-2"> saison 5</li>  
+                </ul>
+
+    </div>
+        </div>
+        </div>
+   {% endblock %}             
