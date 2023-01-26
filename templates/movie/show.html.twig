@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="container-xl bg-light pt-5">
+
+    <div class="row mb-2">
+
+        <div class="col">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-with">
+            <div class="col-4 movie__poster img-thumbnail" style="background-image: url({{ movie.poster }});" class="images">
+            </div>
+
+            <div class="col-8 p-4 d-flex flex-column position-static bg-light">
+                <a href="" class="movie__favorite fs-1 my-2 mx-3 link-danger"></a>
+                <strong class="d-inline-block mb-2 text-primary">{{ movie.type}}</strong>
+                <h3 class="mb-1" "text-muted">{{ movie.title }}</h3>
+                <div class="mb-1 text-muted">{{ movie.duration}}</div>
+                <p>
+                    <span class="badge bg-warning text-dark">Animation</span>
+                    <span class="badge bg-warning text-dark">Aventure</span>
+                    <span class="badge bg-warning text-dark">comedie</span>
+                    <span class="badge bg-warning text-dark">famille</span>
+                
+                </p>
+                    <p> synopsis <br> {{ movie.synopsis }}</p>
+            
+                    <p> summary <br>{{ movie.summary }}</p>
+                                       
+                                    
+                <div class="d-flex mb-4" style="color: orange;">
+                    <i class="bi bi-star-fill"></i>                
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <span class="ps-1">{{ movie.rating }}</span>
+                 </div>
+
+                 <h2>3 saisons </h2>
+                 <ul class="list-unstyled">
+                    <li><span class="badge bg-danger fs-6 mb-2"> saison 1</li>  
+                    <li><span class="badge bg-danger fs-6 mb-2"> saison 2</li>  
+                    <li><span class="badge bg-danger fs-6 mb-2"> saison 5</li>  
+                </ul>
+
+                <dl class="row">
+                    <dt class="col-sm-12">Avec<dt>
+                    <dd class="col-sm-12">
+                        Acteur 1<br>
+                        Acteur 2<br>
+                        Acteur 3<br>
+                    </dd>
+                    <dt class="col-sm-12">Pays<dt>
+                    <dd class="col-sm-12">USA<dd>
+                    <dt class="col-sm-12">Année</dt>
+                    <dd class="col-sm-12">{{ movie.releaseDate|date("m/d/y") }}<dd>
+                </dl>    
+
+</div>
+    </div>
+        </div>
+{% endblock %}
