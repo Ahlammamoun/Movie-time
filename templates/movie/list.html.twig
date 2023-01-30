@@ -10,8 +10,8 @@
 
 
 <div class="my-5 py-5 text-center">
-    <img src="assets/favicon.png" height="100" alt="logo" class="logo">
-    <h1 class="display-6 fw-bold">films, séries, tv,  et chips</h1>
+    <img src="./../assets/favicon.png" height="100" alt="logo" class="logo">
+    <h1 class="display-6 fw-bold">films</h1>
     <div class="col-lg-6 mx-auto">
          <p class="lead mb-4 text-muted">gratis</p>
     </div>
@@ -42,11 +42,10 @@
     <div class="col-12 col-lg-9">
 
          <h2 class="text-muted fw-bold mb-4">nouveautés</h2>
-{% for key, movie in movies %}
+{% for movie in movies %}
 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-white">
-        <div class="col-4 movie__poster" 
-            style="background-image: url({{ movie.poster }});">
-           <!--<img src="https://via.placeholder.com/350" class="img-fluid">-->
+        <div class="col-4 movie__poster" style="background-image: url({{ movie.poster }});">
+          
         </div>
         <div class="col-8 p-4 d-flex flex-column position-static">
             <a href="" class="movie__favorite fs-1 my-2 m-"></a>
@@ -62,12 +61,14 @@
                 <i class="bi bi-star-fill"></li>
                 <i class="bi bi-star-fill"></li>
                 <i class="bi bi-star-half"></li>
+               
             <span class="ps-1">{{ movie.rating }}</span>
 
              </div>
-            <a href="{{ path('main_show', {'id' : key}) }}" class="fs-1 mt-3 text-danger align-center">
+            <a href="{{ path('app_movie', {'id' : movie.id}) }}" class="fs-1 mt-3 text-danger align-center">
                 <i class="bi bi-arrow-right-square"></li>
             </a>
+
         </div>
     </div>
 

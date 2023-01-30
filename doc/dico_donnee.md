@@ -45,3 +45,6 @@ Review
 | text|  |
 |date|  |
 |note|  |
+
+OneToMany => One Movie To Many Season
+ManyToOne => Many Season To One Movie

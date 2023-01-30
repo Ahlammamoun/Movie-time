@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+
+    <h1>{{ genre.name }}!</h1>
+
+
+{% for movie in genre.movies %}
+<div class="container-xl bg-light pt-5">
+
+    <div class="row mb-2">
+       
+        <div class="col">
+         <p>{{ movie.title }}</p>
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm bg-with">
+            <div class="col-4 movie__poster img-thumbnail" style="background-image: url({{ movie.poster }});" class="images">
+            </div>
+            
+            <div class="col-8 p-4 d-flex flex-column position-static bg-light">
+                <a href="" class="movie__favorite fs-1 my-2 mx-3 link-danger"></a>
+                <strong class="d-inline-block mb-2 text-primary">{{ movie.summary}}</strong>
+              </div>
+           </div> 
+{% endfor %}
+               
+           
+</div>
+    </div>
+        </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
