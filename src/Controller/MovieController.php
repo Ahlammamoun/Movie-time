@@ -27,8 +27,6 @@ class MovieController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/movie/{id}", name="app_movie", requirements={"id": "\d+"})
      */
@@ -41,14 +39,13 @@ class MovieController extends AbstractController
     public function show(MovieRepository $movieRepos, int $id): Response
     {
         $movie = $movieRepos->find($id);
-       
+       dump($movie);
         return $this->render('movie/show.html.twig', [
           
             'movie' => $movie ,
           
 
         ]);
-
 
     }
 

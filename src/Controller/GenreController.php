@@ -16,9 +16,8 @@ class GenreController extends AbstractController
     public function index(Genre $genre): Response
     {
 
-      
 
-        return $this->render('genre/index.html.twig', [
+        return $this->render('movie/genre.html.twig', [
            'genre' => $genre,
         ]);
      
