@@ -43,11 +43,13 @@
                 </ul>
                 <dl class="row">
                     <dt class="col-sm-12">Avec<dt>
-
-                    {
-                            <em>pas d'acteur</em>                     
+                    <dd class="col-sm-12">
+                        {% for casting in movie.castings %}
+                            {{ casting.actor.firstname }} {{ casting.actor.lastname }} {{ casting.role }}<br>
+                        {% else %}
+                            <em>pas d'acteur</em><br>
+                        {% endfor %}                
                     </dd>
-               
                     <dt class="col-sm-12">Pays<dt>
                     <dd class="col-sm-12">USA<dd>
                     <dt class="col-sm-12">Année</dt>
