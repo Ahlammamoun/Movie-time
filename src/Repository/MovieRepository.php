@@ -39,6 +39,21 @@ class MovieRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function getAllByOrderByTitle()
+    {
+
+        $results = $this->createQueryBuilder('m')
+
+            ->orderBy('m.title', 'ASC')
+            ->getQuery()
+            ->getResult() ;
+    
+
+        return $results;
+
+    }
+
 //    /**
 //     * @return Movie[] Returns an array of Movie objects
 //     */

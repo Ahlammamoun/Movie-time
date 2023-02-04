@@ -72,11 +72,13 @@ class Movie
 
     /**
      * @ORM\ManyToMany(targetEntity=Genre::class, inversedBy="movies", fetch="EAGER")
+     * @ORM\OrderBy({"name" = "DESC"})
      */
     private $genres;
 
     /**
      * @ORM\OneToMany(targetEntity=Casting::class, mappedBy="movie")
+     * @ORM\OrderBy({"creditOrder" = "ASC"})
      */
     private $castings;
 
