@@ -54,6 +54,39 @@ class MovieRepository extends ServiceEntityRepository
 
     }
 
+
+
+    public function getAllByOrderByTitleDql()
+    {
+
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createquery(
+
+            'SELECT truc.title
+             FROM APp\Entity\Movie truc
+             ORDER BY truc.title DESC'
+        );
+    
+        //return un array de l'objet movie
+        $results = $query->getResult();
+       //dd($results);
+
+
+        return $results;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 //    /**
 //     * @return Movie[] Returns an array of Movie objects
 //     */

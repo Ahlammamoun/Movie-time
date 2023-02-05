@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
 use App\Repository\CastingRepository;
+use App\Form\ReviewType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,9 +22,10 @@ class MovieController extends AbstractController
     public function home(MovieRepository $Repos): Response 
     {
         $movies = $Repos->findAll();
+
         //dd($movies);
         return $this->render('movie/index.html.twig', [
-        
+           
             'movies' => $movies ,
         ]);
     }
@@ -44,12 +46,15 @@ class MovieController extends AbstractController
         //dump($movie);
 
         $CastingsFilterByMovieByORder = $castingRepo->findBy(['movie' => $movie], ['creditOrder' => 'ASC']);
-        dump($CastingsFilterByMovieByORder);
+        
+
+        //dump($CastingsFilterByMovieByORder);
 
         return $this->render('movie/show.html.twig', [
           
             'movie' => $movie ,
             'CastingsFilterByMovieByORder' => $CastingsFilterByMovieByORder,
+        
         ]);
             
     }
@@ -77,14 +82,13 @@ class MovieController extends AbstractController
     {
         $newMovie = new Movie();
 
-        $newMovie->setTitle("autant en emporte le vent");
+        $newMovie->setTitle("milles et une nuits");
         $newMovie->setDuration(90);
-        $newMovie->setDuration(90);
-        $newMovie->settype("Film");
+        $newMovie->setType("Film");
         $newMovie->setReleaseDate(new DateTime("now"));
-        $newMovie->setSummary("Lorem");
-        $newMovie->setSynopsis("lorem ipsum");
-        $newMovie->setPoster("https://static1.magazine.ribambel.com/articles/8/25/78/@/31636-avant-d-adopter-lisez-en-famille-ces-qu-v2_article_big-5.jpg");
+        $newMovie->setSummary("en plein envoutement , dans la douceur d'une nuit d'orient");
+        $newMovie->setSynopsis("shéhérazade et les ultan");
+        $newMovie->setPoster("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSERQdylidSEcEnWXMy3pBw4odcOGwHyRv_EQ&usqp=CAU");
 
         //dump($newMovie);
         $doctrine->persist($newMovie);
