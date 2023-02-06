@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReviewRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,16 +20,21 @@ class Review
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text")@Assert\Lenght(min=10)
+     * @Assert\NotBlank
+     * @Assert\Length(min=10)
      */
     private $description;
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank
+     * 
      */
     private $rating;
 

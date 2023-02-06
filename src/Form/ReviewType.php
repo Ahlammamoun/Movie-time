@@ -9,6 +9,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
+
+
 class ReviewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -35,7 +37,7 @@ class ReviewType extends AbstractType
                 ],
               
                 'placeholder' => 'Votre appréciation',
-                'preferred_choices' => ['Bon', 'arr'],
+                'preferred_choices' => [3, 1],
                 'label' => false,
 
             ])
