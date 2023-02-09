@@ -41,7 +41,7 @@ class ReviewType extends AbstractType
                 'label' => false,
 
             ])
-            //->add('Movie')
+            //->add('Movie', EntityType::class,)
         ;
     }
 

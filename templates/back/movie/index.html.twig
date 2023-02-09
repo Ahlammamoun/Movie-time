@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block navAdmin %}
+<h1>Bienvenu dans votre backoffice</h1>
+<div class="">
+<a class="nav-link text-light btn btn-dark link-unstyled" href="{{path ('app_back_casting_index') }}" >Casting</a>
+<a class="nav-link text-light btn btn-secondary link-unstyled" href="{{path ('app_back_actor_index') }}">Actor</a>
+<a class="nav-link text-light btn btn-info link-unstyled" href="{{path ('app_back_genre_index') }}">Genre</a>
+
+</div>
+
+
+{% endblock %}
+
+{% block body %}
+    <h1>Movie List</h1>
+
+{% for message in app.flashes('notice') %}
+    <div class="alert alert-success" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+
+    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Release_date</th>
+                <th>Duration</th>
+                <th>Type</th>
+                <th>Synopsis</th>
+                <th>Summary</th>
+                <th>Rating</th>
+                <th>Poster</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for movie in movies %}
+            <tr>
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.releaseDate ? movie.releaseDate|date('Y-m-d') : '' }}</td>
+                <td>{{ movie.duration }}</td>
+                <td>{{ movie.type }}</td>
+                <td>{{ movie.synopsis }}</td>
+                <td>{{ movie.summary }}</td>
+                <td>{{ movie.rating }}</td>
+                <td>{{ movie.poster }}</td>
+                <td>
+                    <a href="{{ path('app_back_movie_show', {'id': movie.id}) }}" class="text-light bg-dark">show</a>
+                    <a href="{{ path('app_back_movie_edit', {'id': movie.id}) }}" class="text-light bg-dark" >edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_movie_new') }}" class="text-info bg-dark">Create new</a>
+{% endblock %}

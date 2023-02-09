@@ -36,12 +36,12 @@ class ReviewController extends AbstractController
           $review->SetMovie($movie);
 
 
-          dd($review);
+          //dd($review);
           $doctrine->persist($review);
           $doctrine->flush();
 
-
-          $this->redirectToRoute('movie', ['id' => $movie->getId()]);
+          
+         return $this->redirectToRoute('app_movie', ['id' => $movie->getId()]);
         
       }
 

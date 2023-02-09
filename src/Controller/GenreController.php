@@ -13,16 +13,30 @@ class GenreController extends AbstractController
     /**
      * @Route("/genre/{id}", name="app_genre", requirements={"id": "\d+"})
      */
-    public function index(Genre $genre): Response
+    public function show(Genre $genre): Response
     {
 
 
         return $this->render('movie/genre.html.twig', [
            'genre' => $genre,
-        ]);
-        
-            
+        ]);      
     }
+
+  /**
+     * @Route("/genre/{name}", name="app_genre_deux")
+     */
+    public function showbyName(Genre $genre): Response
+    {
+        return $this->render('movie/genre.html.twig', [
+           'genre' => $genre,
+        ]);
+      
+    }
+
+
+
+
+
 
 
 

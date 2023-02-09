@@ -5,6 +5,7 @@ namespace App\Controller;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
+use App\Repository\ReviewRepository;
 use App\Repository\CastingRepository;
 use App\Form\ReviewType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,22 +40,25 @@ class MovieController extends AbstractController
     //à partir de l'entité Movie et comme il y a un id dans la route , 
     //le framework en déduit que c'est une route dynamique et va chercher la méthode adéquat find()
     // est rempli le variable $movie directement sans passer par l'etape $movie = $movieRepos->find($id)
-    public function show(MovieRepository $movieRepos, int $id, CastingRepository $castingRepo ): Response
+    public function show(MovieRepository $movieRepos, int $id, CastingRepository $castingRepo, ReviewRepository $reviewRepository ): Response
     {
         $movie = $movieRepos->find($id);
-       
-        //dump($movie);
+  
+        //dd($reviews);
+        //dd($movie);
 
         $CastingsFilterByMovieByORder = $castingRepo->findBy(['movie' => $movie], ['creditOrder' => 'ASC']);
-        
-
-        //dump($CastingsFilterByMovieByORder);
+     
+       
+        //$lastReview = $reviewRepository->findBy(['Movie' => $Movie], ['id' => 'DESC'], 1);
+       // dd($lastReviews);
 
         return $this->render('movie/show.html.twig', [
           
             'movie' => $movie ,
             'CastingsFilterByMovieByORder' => $CastingsFilterByMovieByORder,
-        
+         
+            
         ]);
             
     }

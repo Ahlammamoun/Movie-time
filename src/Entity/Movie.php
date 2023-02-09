@@ -306,4 +306,15 @@ class Movie
 
         return $this;
     }
+
+    public function getNameAndDuration()
+    {
+
+        return $this->getTitle() . ' ' . ' (durée ' . $this->getDuration() . ' min' . ' ) ';
+
+    }
+
+
+
+
 }

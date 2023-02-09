@@ -96,4 +96,16 @@ class Review
 
         return $this;
     }
+
+
+
+
+    public function getReviews($id): string 
+    {
+        return $this->getDescription();
+
+    }
+
+
+
 }
