@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Casting index{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
     <h1>Casting index</h1>
 
-    <table class="table">
+    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,8 +21,8 @@
                 <td>{{ casting.role }}</td>
                 <td>{{ casting.creditOrder }}</td>
                 <td>
-                    <a href="{{ path('app_back_casting_show', {'id': casting.id}) }}">show</a>
-                    <a href="{{ path('app_back_casting_edit', {'id': casting.id}) }}">edit</a>
+                    <a href="{{ path('app_back_casting_show', {'id': casting.id}) }}" class="text-light bg-dark" >show</a>
+                    <a href="{{ path('app_back_casting_edit', {'id': casting.id}) }}"  class="text-light bg-dark">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_casting_new') }}">Create new</a>
+    <a href="{{ path('app_back_casting_new') }}" class="text-info bg-dark">Create new</a>
 {% endblock %}
