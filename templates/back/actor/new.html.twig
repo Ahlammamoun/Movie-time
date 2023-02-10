@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Actor{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
     <h1>Create new Actor</h1>
-
+<div class=" text-xl font-weight-bold bg-secondary bg-gradient">
     {{ include('back/actor/_form.html.twig') }}
 
-    <a href="{{ path('app_back_actor_index') }}">back to list</a>
+    <a href="{{ path('app_back_actor_index') }}"  class="text-info bg-dark" >back to list</a>
+    </div>
 {% endblock %}

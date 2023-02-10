@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Actor{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
+  <a href="{{ path('app_back_actor_index') }}"  class="text-info bg-dark" >back to list</a>
     <h1>Actor</h1>
 
-    <table class="table">
+    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -22,7 +23,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_actor_index') }}">back to list</a>
+  
 
     <a href="{{ path('app_back_actor_edit', {'id': actor.id}) }}">edit</a>
 

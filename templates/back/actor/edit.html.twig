@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Actor{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-  <a href="{{ path('app_back_movie_index') }}" class="text-info bg-dark"  >back to list</a>
+   <a href="{{ path('app_back_actor_index') }}"  class="text-info bg-dark" >back to list</a>
     <h1>Edit Actor</h1>
 <div class=" text-xl font-weight-bold bg-secondary bg-gradient">
     {{ include('back/actor/_form.html.twig', {'button_label': 'Update'}) }}
