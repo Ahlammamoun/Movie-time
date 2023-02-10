@@ -19,6 +19,8 @@ class GenreType extends AbstractType
             [
             'class' => Movie::class,
             'choice_label' => 'title',
+            'multiple' => true,
+            'expanded' => true,
             ]
         )
         ;

@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre index{% endblock %}
+{% block title %}{% endblock %}
+
+{% block navAdmin %}
+<div class="">
+<a class="nav-link text-light btn btn-dark link-unstyled" href="{{path ('app_back_movie_index') }}" >Movie</a>
+<a class="nav-link text-light btn btn-secondary link-unstyled" href="{{path ('app_back_casting_index') }}" >Casting</a>
+<a class="nav-link text-light btn btn-info link-unstyled" href="{{path ('app_back_actor_index') }}">Actor</a>
+</div>
+
+{% endblock %}
 
 {% block body %}
-    <h1>Genre index</h1>
+    <h1>Genre List</h1>
 
-    <table class="table">
+
+
+    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,8 +30,8 @@
                 <td>{{ genre.id }}</td>
                 <td>{{ genre.name }}</td>
                 <td>
-                    <a href="{{ path('app_back_genre_show', {'id': genre.id}) }}">show</a>
-                    <a href="{{ path('app_back_genre_edit', {'id': genre.id}) }}">edit</a>
+                    <a href="{{ path('app_back_genre_show', {'id': genre.id}) }}" class="text-light bg-dark">show</a>
+                    <a href="{{ path('app_back_genre_edit', {'id': genre.id}) }}" class="text-light bg-dark" >edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_genre_new') }}">Create new</a>
+    <a href="{{ path('app_back_genre_new') }}"  class="text-info bg-dark">Create new</a>
 {% endblock %}

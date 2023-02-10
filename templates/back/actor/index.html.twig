@@ -2,10 +2,21 @@
 
 {% block title %}Actor index{% endblock %}
 
-{% block body %}
-    <h1>Actor index</h1>
 
-    <table class="table">
+{% block navAdmin %}
+<div class="">
+<a class="nav-link text-light btn btn-dark link-unstyled" href="{{path ('app_back_movie_index') }}" >Movie</a>
+<a class="nav-link text-light btn btn-secondary link-unstyled" href="{{path ('app_back_casting_index') }}" >Casting</a>
+<a class="nav-link text-light btn btn-info link-unstyled" href="{{path ('app_back_actor_index') }}">Actor</a>
+</div>
+
+{% endblock %}
+
+
+{% block body %}
+    <h1>Actor list</h1>
+
+    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,8 +32,8 @@
                 <td>{{ actor.firstname }}</td>
                 <td>{{ actor.lastname }}</td>
                 <td>
-                    <a href="{{ path('app_back_actor_show', {'id': actor.id}) }}">show</a>
-                    <a href="{{ path('app_back_actor_edit', {'id': actor.id}) }}">edit</a>
+                    <a href="{{ path('app_back_actor_show', {'id': actor.id}) }}" class="text-light bg-dark">show</a>
+                    <a href="{{ path('app_back_actor_edit', {'id': actor.id}) }}" class="text-light bg-dark">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_actor_new') }}">Create new</a>
+    <a href="{{ path('app_back_actor_new') }}" class="text-info bg-dark" >Create new</a>
 {% endblock %}

@@ -3,11 +3,12 @@
 {% block title %}Edit Actor{% endblock %}
 
 {% block body %}
+  <a href="{{ path('app_back_movie_index') }}" class="text-info bg-dark"  >back to list</a>
     <h1>Edit Actor</h1>
-
+<div class=" text-xl font-weight-bold bg-secondary bg-gradient">
     {{ include('back/actor/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_back_actor_index') }}">back to list</a>
+    </div>
 
     {{ include('back/actor/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Genre{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
+ <a href="{{ path('app_back_movie_index') }}" class="text-info bg-dark"  >back to list</a>
     <h1>Genre</h1>
 
-    <table class="table">
+
+
+    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -18,9 +21,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_genre_index') }}">back to list</a>
+    
 
-    <a href="{{ path('app_back_genre_edit', {'id': genre.id}) }}">edit</a>
+    <a href="{{ path('app_back_genre_edit', {'id': genre.id}) }}" class="text-info bg-dark" >edit</a>
 
     {{ include('back/genre/_delete_form.html.twig') }}
 {% endblock %}
