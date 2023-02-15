@@ -20,7 +20,7 @@
 
    <div class="container-fluid">
     <img src="assets/favicon.png" height="25" alt="logo" class="logo">
-      <a class="navbar-brand text-danger" href="{{ path('app_home') }}" class="text-light">Movie time</a>
+      <a class="navbar-brand text-danger text-uppercase font-weight-bold" href="{{ path('app_home') }}" >Movie time</a>
       <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,10 +30,11 @@
                <a class="nav-link active text-light" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-light" href="{{ path('app_movies') }}">Films</a>
+               <a class="nav-link text-light" href="{{ path('app_movies') }}">Films, Séries TV	
+&#127909;</a>
             </li>
             <li class="nav-item ">
-               <a class="nav-link text-light" href="{{ path('main_favorites') }}">Favories</a>
+               <a class="nav-link text-light" href="{{ path('main_favorites') }}">Ma liste</a>
                </li>
             
       {% if app.user %}
@@ -41,11 +42,11 @@
          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
                data-bs-toggle="dropdown">
-               <span>{{ app.user.email }}</span>
+               <span>{{ app.user.email }} </span>
                <i class="bi bi person-square">
             </a>
             <ul class="dropdown-menu">
-               <li><a class="dropdown-item" href="#">Profil</a></li>
+               <li><a class="dropdown-item text-uppercase" href="#">({{ app.user.displayRole() }})</a></li>
                <li><a class="dropdown-item" href="{{ path('app_back_movie_index')}}">Backoffice</a></li>
                <li>
                   <hr class="dropdown-divider">

@@ -3,12 +3,17 @@
 namespace App\DataFixtures;
 
 
-use App\Entity\Season;
+use App\DataFixtures\Provider\MovieTimeProvider;
 use Doctrine\bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Movie;
+use App\Entity\Casting;
+use App\Entity\Season;
+use App\Entity\User;
 use DateTime;
+use Faker\Factory as Faker;
 use Doctrine\DBAL\Connexion;
+use Symfony\Component\PasswordHasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
@@ -16,9 +21,10 @@ class AppFixtures extends Fixture
     //comment executer du pure sql
     private $connexion;
 
-    public function __construct(Connexion $connexion){
+    public function __construct(Connexion $connexion, UserPasswordHasherInterface $hasher){
 
         $this->connexion = $connexion;
+        $this->$hasher = $hasher;
     }
 
 
@@ -32,6 +38,8 @@ class AppFixtures extends Fixture
         //le TRUNCATE remet l'auto incrément à 1
         $this->connexion->executeQuery('TRUNCATE TABLE casting');
         $this->connexion->executeQuery('TRUNCATE TABLE genre');
+        $this->connexion->executeQuery('TRUNCATE TABLE user');
+        $this->connexion->executeQuery('TRUNCATE TABLE movie');
         //etc 
 
     }
@@ -85,16 +93,54 @@ class AppFixtures extends Fixture
 
             }
             
-            
-            $doctrine->persist($newMovie);
+
+            $users = [
+
+                [
+                    'login' => 'admin@admin.com',
+                    'passeword' => 'admin',
+                    'roles' => 'ROLE_ADMIN',
+                ],
+                [
+                    'login' => 'manager@manager.com',
+                    'passeword' => 'manager',
+                    'roles' => 'ROLE_MANAGER',
+                ],
+                [
+                    'login' => 'user@user.com',
+                    'passeword' => 'user',
+                    'roles' => 'ROLE_USER',
+                ],
+
+
+             
+
+
+            ];
+
+
+                    foreach ($users as $currentUser){
+
+
+                        $newUser = new Users();
+                        $newUser->setEmail($currentUser['login']);
+                        $newUser->setRoles($currentUser['roles']);
+                        $newUser->setPassword($currentUser['password']);
+                    
+                        
+        
+                        $hashedPassword = $this->$hasher->hashPassword(
+                            $newUser,
+                            $currentUser['password']
+                        );
+                        $newUser->setPassword($hashedPassword);
+                        $doctrine->persist($newUser);
+
+                    }
+
         }
         $doctrine->flush();
 
-
     }
-
-
-
-
 
 }
