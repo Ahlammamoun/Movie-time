@@ -33,7 +33,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/back/[^/]+/\d+$, roles: ROLE_ADMIN, methods: [POST] } #route delete
-        - { path: ^/back/[^/]+/new$, roles: ROLE_ADMIN } #route add
+       # - { path: ^/back/[^/]+/new$, roles: ROLE_ADMIN } #route add
         - { path: ^/back/[^/]+/\d+/edit$, roles: ROLE_ADMIN } #route delete
         - { path: ^/back/[^/]+/\d+$, roles: ROLE_MANAGER, methods: [GET] } #route show
         - { path: ^/back/[^/]+/$, roles: ROLE_MANAGER } #route de liste

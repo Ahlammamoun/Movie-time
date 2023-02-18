@@ -74,19 +74,19 @@
                     <dt class="col-sm-12">Année</dt>
                     <dd class="col-sm-12">{{ movie.releaseDate|date("m/d/y") }}<dd>
                 </dl>    
-                <h2>Critiques</h2>
-                <div class="col">
-
-                
-
-                    <div class="">
-                        
-                    
+               
+            
                         </div>
-                 </div>       
+                 </div>      
+                 
+                <h2>Dernière Citique</h2>
+                    <ul class="list-group">
+                    <li class="list-group-item list-group-item-dark"> {{ lastReview.title }}</li>
+                    <li class="list-group-item list-group-item-dark">  {{ lastReview.description }}</li>
+                    <li class="list-group-item list-group-item-dark">{{ lastReview.rating }}/5 </li>
+                    </ul>
                 <p><a class="btn btn-sm btn-warning" href="{{ path('movie_review_add', {id: movie.id}) }}">Ajouter une critique</a></p>
-              
-            </div>
+          </div>
      </div>
 </div>
 {% endblock %}

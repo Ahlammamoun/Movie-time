@@ -5,25 +5,30 @@ namespace App\DataFixtures;
 
 use App\DataFixtures\Provider\MovieTimeProvider;
 use Doctrine\bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Movie;
+use App\Entity\Actor;
+use App\Entity\Genre;
 use App\Entity\Casting;
 use App\Entity\Season;
 use App\Entity\User;
 use DateTime;
 use Faker\Factory as Faker;
-use Doctrine\DBAL\Connexion;
+use Doctrine\DBAL\Connection;
 use Symfony\Component\PasswordHasher\UserPasswordHasherInterface;
 
 
 class AppFixtures extends Fixture
 {
     //comment executer du pure sql
-    private $connexion;
+    private $connection;
+    private $hasher;
 
-    public function __construct(Connexion $connexion, UserPasswordHasherInterface $hasher){
 
-        $this->connexion = $connexion;
+    public function __construct(Connection $connection, UserPasswordHasherInterface $hasher){
+
+        $this->connection = $connection;
         $this->$hasher = $hasher;
     }
 
@@ -32,27 +37,22 @@ class AppFixtures extends Fixture
     {
 
         //on désactive les fk sinon truncate ne fonctionne pas
-        $this->connexion->executeQuery('SET foreign_key_checks = 0');
-
-
+        $this->connection->executeQuery('SET foreign_key_checks = 0');
         //le TRUNCATE remet l'auto incrément à 1
-        $this->connexion->executeQuery('TRUNCATE TABLE casting');
-        $this->connexion->executeQuery('TRUNCATE TABLE genre');
-        $this->connexion->executeQuery('TRUNCATE TABLE user');
-        $this->connexion->executeQuery('TRUNCATE TABLE movie');
+        $this->connection->executeQuery('TRUNCATE TABLE casting');
+        $this->connection->executeQuery('TRUNCATE TABLE genre');
+        $this->connection->executeQuery('TRUNCATE TABLE user');
+        $this->connection->executeQuery('TRUNCATE TABLE movie');
         //etc 
 
     }
 
-
     public function load(ObjectManager $manager): void
     {
-
         $this->truncate();
-
+        $faker = Faker::create('fr_FR');
+        $MovieTimeProvider = new MovieTimeProvider();
         /***genre */
-
-
 
 
         /***movie */
@@ -60,7 +60,7 @@ class AppFixtures extends Fixture
         {
             $newMovie = new Movie();
 
-            $newMovie->setTitle("Film #" . $i);
+            $newMovie->setTitle($MovieTimeProvider->movieTitle());
             $newMovie->setDuration(rand(30, 180));
         
             $type = rand(1, 2) == 1 ? 'Film' : 'Serie';
@@ -92,7 +92,21 @@ class AppFixtures extends Fixture
 
 
             }
-            
+            //casting
+            for ($i=0; $i < mt_rand(1, 5); $i++){
+
+                $casting = new Casting();
+                $casting->setRole("Rôle #" . $i);
+                $casting->creditOrder($i);
+
+                $randomMovie = $allMovieEntity[mt_rand(0, count($allMovieEntity) - 1)];
+                $casting->setMovie($randomMovie);
+                $randomActor = $allActorEntity[mt_rand(0, count($allActorEntity) - 1)];
+
+                $casting->setActor($randomActor);
+
+                $manager->persist($casting);
+            }
 
             $users = [
 

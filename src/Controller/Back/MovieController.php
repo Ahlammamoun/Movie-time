@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/back/movie")
  */
@@ -27,9 +27,17 @@ class MovieController extends AbstractController
 
     /**
      * @Route("/new", name="app_back_movie_new", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
+
+    
     public function new(Request $request, MovieRepository $movieRepository): Response
     {
+
+        //méthode d'authorisation et/ou par regex dans les acl
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+
         $movie = new Movie();
         $form = $this->createForm(MovieType::class, $movie);
         $form->handleRequest($request);
@@ -86,6 +94,7 @@ class MovieController extends AbstractController
      */
     public function delete(Request $request, Movie $movie, MovieRepository $movieRepository): Response
     {
+        
         if ($this->isCsrfTokenValid('delete'.$movie->getId(), $request->request->get('_token'))) {
             $movieRepository->remove($movie, true);
         }else{

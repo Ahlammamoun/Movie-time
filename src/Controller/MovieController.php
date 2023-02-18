@@ -43,21 +43,21 @@ class MovieController extends AbstractController
     public function show(MovieRepository $movieRepos, int $id, CastingRepository $castingRepo, ReviewRepository $reviewRepository ): Response
     {
         $movie = $movieRepos->find($id);
-  
-        //dd($reviews);
-        //dd($movie);
+        
 
         $CastingsFilterByMovieByORder = $castingRepo->findBy(['movie' => $movie], ['creditOrder' => 'ASC']);
      
-       
-        //$lastReview = $reviewRepository->findBy(['Movie' => $Movie], ['id' => 'DESC'], 1);
-       // dd($lastReviews);
+
+
+        $Movie = $movieRepos->find($id);
+        $lastReview = $reviewRepository->findBy(['Movie' => $Movie], ['id' => 'DESC'], 1);
+        //dd($lastReview);
 
         return $this->render('movie/show.html.twig', [
           
             'movie' => $movie ,
             'CastingsFilterByMovieByORder' => $CastingsFilterByMovieByORder,
-         
+            'lastReview' => $lastReview[0],
             
         ]);
             
@@ -75,74 +75,6 @@ class MovieController extends AbstractController
             'movies' => $movies ,
         ]);
     }
-
-
-        /**
-     * @Route("/movie/create/", name="app_movie_create")
-     * @param EntityManagerInterface 
-     */
-        
-    public function create(EntityManagerInterface $doctrine): Response
-    {
-        $newMovie = new Movie();
-
-        $newMovie->setTitle("milles et une nuits");
-        $newMovie->setDuration(90);
-        $newMovie->setType("Film");
-        $newMovie->setReleaseDate(new DateTime("now"));
-        $newMovie->setSummary("en plein envoutement , dans la douceur d'une nuit d'orient");
-        $newMovie->setSynopsis("shéhérazade et les ultan");
-        $newMovie->setPoster("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSERQdylidSEcEnWXMy3pBw4odcOGwHyRv_EQ&usqp=CAU");
-
-        //dump($newMovie);
-        $doctrine->persist($newMovie);
-      
-
-        $doctrine->flush();
-        //dump($newMovie);
-
-        return $this->redirectToRoute("app_movies");
-
-    }
-
-
-     /**
-     * @Route("/movie/update/{id}", name="app_movie_update")
-     * @param EntityManagerInterface 
-     */
-
-    public function update(int $id, MovieRepository $MovieRepository, EntityManagerInterface $doctrine): Response
-    {
-
-        $movie = $MovieRepository->find($id);
-
-        $movie->setTitle('peĉhe xxl ' . mt_rand(2, 99));
-
-
-        //$doctrine->flush();
-
-        return $this->redirectToRoute('app_movie', array("id" => $id));
-
-    }
-
-
-     /**
-     * @Route("/movie/delete/{id}", name="app_movie_delete")
-     * @param EntityManagerInterface 
-     */
-
-    public function delete(int $id, MovieRepository $MovieRepository, EntityManagerInterface $doctrine): Response
-    {
-
-        $movie = $MovieRepository->find($id);
-
-        $doctrine->remove($movie);
-
-        $doctrine->flush();
-
-        return $this->redirectToRoute("app_movies");
-    }
-
 
 
 
