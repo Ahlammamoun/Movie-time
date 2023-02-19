@@ -55,21 +55,15 @@
             <p><small>{{ movie.summary }}</small></p>
 
 
-            <div class="d-flex" style="color: orange;">
-                <i class="bi bi-star-fill"></li>
-                <i class="bi bi-star-fill"></li>
-                <i class="bi bi-star-fill"></li>
-                <i class="bi bi-star-fill"></li>
-                <i class="bi bi-star-half"></li>
+          
                
-            <span class="ps-1">{{ movie.rating }}</span>
+            <span class="ps-1">{{ movie.rating }} / 5</span>
 
              </div>
-            <a href="{{ path('app_movie', {'id' : movie.id}) }}" class="fs-1 mt-3 text-danger align-center">
-                <i class="bi bi-arrow-right-square"></li>
-            </a>
+          
 
-        </div>
+   <a href="{{path('app_movie', {'id' : movie.id}) }}"  class="btn btn-secondary btn-lg active bg-danger" role="button" aria-pressed="true"  >Voir plus</a>
+
     </div>
 
 {% endfor %}

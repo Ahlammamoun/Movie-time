@@ -48,26 +48,29 @@
             style="background-image: url({{ movie.poster }});">
         </div>
         <div class="col-8 p-4 d-flex flex-column position-static">
-            <a href="" class="movie__favorite fs-1 my-2 m-"></a>
+        
             <strong class="d-inline-block mb-2 text-success">{{ movie.type }}</strong>
             <h3 class="mb-1">{{ movie.title }}</h3>
             <div class="m-b 1 texte-muted">{{ movie.duration }} min</div>
             <p><small>{{ movie.summary }}</small></p>
 
 
-            <div class="d-flex" style="color: orange;">
+           <!-- <div class="d-flex" style="color: orange;">
+                    <i class="bi bi-star-fill"></li>
                 <i class="bi bi-star-fill"></li>
                 <i class="bi bi-star-fill"></li>
                 <i class="bi bi-star-fill"></li>
-                <i class="bi bi-star-fill"></li>
-                <i class="bi bi-star-half"></li>
-            <span class="ps-1">{{ movie.rating }}</span>
-
-             </div>
-            <a href="{{ path('app_movie', {'id' : movie.id}) }}" class="fs-1 mt-3 text-danger align-center">
-                <i class="bi bi-arrow-right-square"></li>
-            </a>
+            <i class="bi bi-star-half"></li> -->
+            <span class="ps-1">{{ movie.rating }} / 5</span>
+                 
+      
+             
+  <!--<a href="#" class="btn btn-secondary btn-lg active col col-lg-2" role="button" aria-pressed="true">Link</a>
+              <i class="bi bi-star-half"></li> 
+                   <i class="bi bi-arrow-right-square"></li>-->
         </div>
+        <a href="{{path('app_movie', {'id' : movie.id}) }}"  class="btn btn-secondary btn-lg active bg-danger" role="button" aria-pressed="true"  >Voir plus</a>
+     
     </div>
    
 

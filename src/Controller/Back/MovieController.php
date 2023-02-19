@@ -69,6 +69,9 @@ class MovieController extends AbstractController
      */
     public function edit(Request $request, Movie $movie, MovieRepository $movieRepository): Response
     {
+
+        //système des voter lorsqu'on utilise denyAccessUnlessGranted , on passe dans la fonction supports dans le voter
+        $this->denyAccessUnlessGranted("UPDATE_THE_MOVIE", $movie);
         $form = $this->createForm(MovieType::class, $movie);
         $form->handleRequest($request);
 
