@@ -6,8 +6,8 @@
 {% block navAdmin %}
 <div class="">
 <a class="nav-link text-light btn btn-dark link-unstyled" href="{{path ('app_back_movie_index') }}" >Movie</a>
-<a class="nav-link text-light btn btn-secondary link-unstyled" href="{{path ('app_back_genre_index') }}" >Genre</a>
-<a class="nav-link text-light btn btn-info link-unstyled" href="{{path ('app_back_actor_index') }}">Actor</a>
+<a class="nav-link text-light btn btn-danger link-unstyled" href="{{path ('app_back_genre_index') }}" >Genre</a>
+<a class="nav-link text-light btn btn-dark link-unstyled" href="{{path ('app_back_actor_index') }}">Actor</a>
 </div>
 
 {% endblock %}
@@ -17,7 +17,7 @@
 {% block body %}
     <h1>Casting List</h1>
 
-    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
+    <table class="table text-xl text-light font-weight-bold bg-dark bg-gradient">
         <thead>
             <tr>
                 <th>Id</th>
@@ -45,5 +45,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_casting_new') }}" class="text-info bg-dark">Create new</a>
+    <a href="{{ path('app_back_casting_new') }}" class="text-danger bg-dark">Create new</a>
 {% endblock %}

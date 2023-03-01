@@ -3,8 +3,8 @@
 {% block title %}{% endblock %}
    
 {% block body %}
- <a href="{{ path('app_back_casting_index') }}" class="text-info bg-dark" >back to list</a>
-<div class="text-xl font-weight-bold bg-secondary bg-gradient">
+ <a href="{{ path('app_back_casting_index') }}" class="text-danger bg-dark" >back to list</a>
+<div class="text-xl text-light font-weight-bold bg-dark bg-gradient">
     <h1>Create new Casting</h1>
 
     {{ include('back/casting/_form.html.twig') }}

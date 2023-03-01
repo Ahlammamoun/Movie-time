@@ -3,10 +3,10 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-  <a href="{{ path('app_back_actor_index') }}"  class="text-info bg-dark" >back to list</a>
+  <a href="{{ path('app_back_actor_index') }}"  class="text-danger bg-dark" >back to list</a>
     <h1>Actor</h1>
 
-    <table class="table text-xl font-weight-bold bg-secondary bg-gradient">
+    <table class="table text-xl text-light font-weight-bold bg-dark bg-gradient">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -25,7 +25,7 @@
 
   
 
-    <a href="{{ path('app_back_actor_edit', {'id': actor.id}) }}">edit</a>
+    <a href="{{ path('app_back_actor_edit', {'id': actor.id}) }}" class="text-danger bg-dark">edit</a>
 
     {{ include('back/actor/_delete_form.html.twig') }}
 {% endblock %}

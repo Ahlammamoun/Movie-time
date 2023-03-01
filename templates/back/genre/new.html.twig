@@ -3,9 +3,9 @@
 {% block title %}New Genre{% endblock %}
 
 {% block body %}
- <a href="{{ path('app_back_genre_index') }}" class="text-info bg-dark"  >back to list</a>
+ <a href="{{ path('app_back_genre_index') }}" class="text-danger bg-dark"  >back to list</a>
     <h1>Create new Genre</h1>
-<div class="text-xl font-weight-bold bg-secondary bg-gradient">
+<div class="text-xl tetx-light font-weight-bold bg-dark bg-gradient">
     {{ include('back/genre/_form.html.twig') }}
 </div>
    
