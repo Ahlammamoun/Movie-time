@@ -42,7 +42,7 @@
                         {% endfor %}
                 </ul>
                 <dl class="row">
-                    <dt class="col-sm-12">Avec sans ordre <dt>
+                   <!-- <dt class="col-sm-12">Avec sans ordre <dt>
                     <dd class="col-sm-12">
                         {% for casting in movie.castings %}
                             {{ casting.actor.firstname }} {{ casting.actor.lastname }} dans ({{ casting.role }}) (creditOrder : {{ casting.CreditOrder }})<br>
@@ -51,7 +51,7 @@
                         {% endfor %}                
                     </dd>
 
-                <dt class="col-sm-12">Avec le credit order dans le conrtroller<dt>
+                <dt class="col-sm-12">Avec le credit order dans le conrtroller<dt>-->
                     <dd class="col-sm-12">
                         {% for casting in CastingsFilterByMovieByORder %}
                             {{ casting.actor.firstname }} {{ casting.actor.lastname }} dans ({{ casting.role }}) (creditOrder : {{ casting.CreditOrder }})<br>
@@ -60,14 +60,14 @@
                         {% endfor %}                
                     </dd>   
 
-                  <dt class="col-sm-12">Avec twig<dt>
+                  <!--<dt class="col-sm-12">Avec twig<dt>
                     <dd class="col-sm-12">
                         {% for casting in movie.castings|sort((a, b) => a.CreditOrder <=> b.CreditOrder) %}
                             {{ casting.actor.firstname }} {{ casting.actor.lastname }} dans ({{ casting.role }}) (creditOrder : {{ casting.CreditOrder }})<br>
                         {% else %}
                             <em>pas d'acteur</em><br>
                         {% endfor %}                
-                    </dd>
+                    </dd>-->
                     
                     <dt class="col-sm-12">Pays<dt>
                     <dd class="col-sm-12">USA<dd>

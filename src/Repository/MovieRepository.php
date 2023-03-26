@@ -54,8 +54,6 @@ class MovieRepository extends ServiceEntityRepository
 
     }
 
-
-
     public function getAllByOrderByTitleDql()
     {
 
